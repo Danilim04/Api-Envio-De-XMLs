@@ -11,8 +11,9 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libzip-dev \
     zip \
-    unzip
+    && docker-php-ext-install zip
 RUN apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

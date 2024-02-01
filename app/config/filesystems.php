@@ -41,6 +41,11 @@ return [
             'root' => storage_path('/xmls/rio'),
             'throw' => false,
         ],
+        'zip' => [
+            'driver' => 'local',
+            'root' => storage_path('app/zip'),
+            'throw' => false,
+        ],
         'xmlsEc' => [
             'driver' => 'local',
             'root' => storage_path('/xmls/ec'),
