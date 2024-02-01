@@ -141,7 +141,7 @@ return [
 
     'maintenance' => [
         'driver' => 'file',
-        // 'store'  => 'redis',
+        // 'store' => 'redis',
     ],
 
     /*
@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-        MongoDB\Laravel\MongoDBServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

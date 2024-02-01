@@ -36,6 +36,26 @@ return [
             'throw' => false,
         ],
 
+        'xmlsRio' => [
+            'driver' => 'local',
+            'root' => storage_path('/xmls/rio'),
+            'throw' => false,
+        ],
+        'xmlsEc' => [
+            'driver' => 'local',
+            'root' => storage_path('/xmls/ec'),
+            'throw' => false,
+        ],
+        'xmlsEs' => [
+            'driver' => 'local',
+            'root' => storage_path('/xmls/es'),
+            'throw' => false
+        ],
+        'logsEnvio' => [
+            'driver' => 'local',
+            'root' => storage_path('/logs'),
+            'throw' => false
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

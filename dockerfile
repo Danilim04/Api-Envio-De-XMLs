@@ -17,12 +17,6 @@ RUN apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
-RUN pecl uninstall mongodb
-RUN pecl install mongodb 
-
-RUN docker-php-ext-enable mongodb 
-# Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run Composer and Artisan Commands
