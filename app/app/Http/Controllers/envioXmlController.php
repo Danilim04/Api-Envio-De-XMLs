@@ -22,12 +22,13 @@ class envioXmlController extends Controller
     public function validarRequest($request)
     {
         $pastaConsulta = $request->input('pasta');
-
+        $dias = $request->input('diasAtras');
+        $diasAtras = isset($dias) ? $dias : 1;
         if (
             isset($pastaConsulta) &&
             ($pastaConsulta == 'xmlsEc' | $pastaConsulta == 'xmlsEs' | $pastaConsulta == 'xmlsRio')
         ) {
-            $retorno = $this->envioXmlsService->buscarXmls($pastaConsulta);
+            $retorno = $this->envioXmlsService->buscarXmls($pastaConsulta,$diasAtras);
             return $retorno;
         } else {
             return [

@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\Exception;
 class envioXmlsService
 {
     private $timezone = 'America/Sao_Paulo';
-    public function buscarXmls($pasta)
+    public function buscarXmls($pasta,$diasAtras)
     {
 
         $files = Storage::disk($pasta)->allFiles();
@@ -25,15 +25,14 @@ class envioXmlsService
                 continue;
             } else {
                 $dataModificao = Carbon::parse(Storage::disk($pasta)->lastModified($diretorio), $this->timezone);
-                if ($dataModificao >= Carbon::now($this->timezone)->subDays(5)->startOfDay()) {
+                if ($dataModificao >= Carbon::now($this->timezone)->subDays($diasAtras)->startOfDay()) {
                     $logEnvio = json_decode(Storage::get('logsEnvio.json'));
                     $validaEnvio = array_search("$diretorio", $logEnvio);
                     if ($validaEnvio !== false) {
                         continue;
                     } else {
                         $zip->addFile(Storage::disk($pasta)->path($diretorio), basename($diretorio));
-                        $logEnvioNovo = $logEnvio;
-                        $logEnvioNovo[] = $diretorio;
+                        $log[] = $diretorio;
                         $envio = true;
                     }
                 } else {
@@ -41,7 +40,9 @@ class envioXmlsService
                 }
             }
         }
+        
         if (isset($envio) && $envio) {
+            $logEnvioNovo = array_merge($logEnvio, $log);
             if (!Storage::put('logsEnvio.json',  json_encode($logEnvioNovo))) {
                 return [
                     "status" => false,
