@@ -1,4 +1,21 @@
-# Guia de Implementação da API
+# API de Envio Automático de XMLs
+
+## Descrição
+Este projeto é uma API desenvolvida em PHP com o framework Laravel, que automatiza o envio de arquivos XML. A API monitora uma pasta específica, identifica os arquivos XML mais recentes e os envia por e-mail. Os arquivos são enviados em formato zipado para lidar com grandes volumes de dados e garantir eficiência no envio.
+
+## Funcionalidades
+- **Monitoramento de Pasta**: Verifica continuamente uma pasta específica para novos arquivos XML.
+- **Seleção de Arquivos Recentes**: Identifica e seleciona apenas os XMLs mais recentes para envio.
+- **Prevenção de Envios Repetitivos**: Mantém controle dos XMLs já enviados para evitar duplicidade.
+- **Compactação de Arquivos**: Automatiza a compactação dos arquivos em formato ZIP antes do envio.
+- **Envio de E-mails**: Utiliza a biblioteca PHPMailer para facilitar o envio de e-mails.
+
+## Tecnologias Utilizadas
+- **PHP/Laravel**: Linguagem de programação e framework utilizado para desenvolver a API.
+- **Docker**: Utilizado para criar um ambiente de desenvolvimento isolado e controlado.
+- **PHPMailer**: Biblioteca PHP para enviar e-mails de forma fácil e eficiente.
+
+# Guia para usar 
 
 ## Passo 1: Clone o Repositório
 Baixe o repositório para a sua máquina utilizando o comando:
